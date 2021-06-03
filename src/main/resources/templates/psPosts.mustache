@@ -1,0 +1,28 @@
+{{>layout/header}}
+
+
+<div class="container-fluid">
+<h1 class="text-center">For PlayStation Players</h1><br>
+	{{#psPosts}}
+
+
+	<div class="row justify-content-center text-dark">
+
+		<div class="container">
+			<div class="card">
+				<div class="card-body">
+					<h4 class="card-title">
+						<a href="/posts/detail/{{id}}">Title : {{title}}</a>
+					</h4>
+					<p class="card-text">Writer : {{author}}</p>
+
+				</div>
+			</div>
+			<br>
+		</div>
+
+	</div>
+
+	{{/psPosts}}
+</div>
+{{>layout/footer}}

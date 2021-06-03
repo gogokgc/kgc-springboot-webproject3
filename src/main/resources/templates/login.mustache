@@ -1,0 +1,18 @@
+{{>layout/header}}
+
+<br/>
+
+<div class="container justify-content-center text-dark mh-100" style="height:400px">
+      
+	{{^userName}}
+	
+	<ul>
+      	<a href="/oauth2/authorization/google" class="btn btn-primary btn-block btn-lg">Google Login</a>
+    </ul>
+	
+	{{/userName}}
+</div>
+
+<br/>
+
+{{>layout/footer}}
