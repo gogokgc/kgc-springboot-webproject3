@@ -1,6 +1,7 @@
 spring:
   profiles:
     include: 
+    - oayth
     - real-db
   jpa:
     properties:
