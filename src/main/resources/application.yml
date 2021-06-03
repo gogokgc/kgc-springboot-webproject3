@@ -21,8 +21,8 @@ spring:
       client:
         registration:
           google:
-            client-id: 34064351736-j1htmlohgrv2r7gdghdee3cahj1msaar.apps.googleusercontent.com
-            client-secret: Kz0oZgjG-w4buCmNSQcziylY
+            client-id: 623118713386-hffqegkq6i4gim41ito34ui6tr1nso8m.apps.googleusercontent.com
+            client-secret: 74T4bs6TuPrqbmeNys3SMksq
             scope: 
             - profile
             - email
