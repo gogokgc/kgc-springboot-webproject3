@@ -10,10 +10,23 @@ server:
     
 spring:
 
-  profiles:
-    include:
-    - real
-    - oauth 
+  datasource:
+    driver-class-name: org.mariadb.jdbc.Driver
+    url: jdbc:mariadb://kgc-springboot-webproject2.c4yzvzdyphko.ap-northeast-2.rds.amazonaws.com:3306/kgc_springboot_webproject2
+    username: kgc
+    password: kgc316497
+
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: 34064351736-j1htmlohgrv2r7gdghdee3cahj1msaar.apps.googleusercontent.com
+            client-secret: Kz0oZgjG-w4buCmNSQcziylY
+            scope: 
+            - profile
+            - email
+
   jpa:
     open-in-view: true
     hibernate:
@@ -24,6 +37,7 @@ spring:
     show-sql: true # sql 콘솔출력
     properties:
       hibernate.format_sql: true # sql 문장정리
+      hibernate.dialect: org.hibernate.dialect.MySQL5InnoDBDialect
 
   jackson:
     serialization:
