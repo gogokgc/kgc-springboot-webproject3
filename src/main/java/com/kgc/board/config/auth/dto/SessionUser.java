@@ -1,11 +1,13 @@
 package com.kgc.board.config.auth.dto;
 
+import java.io.Serializable;
+
 import com.kgc.board.domain.user.User;
 
 import lombok.Getter;
 
 @Getter
-public class SessionUser {
+public class SessionUser implements Serializable{
 
 	private String name;
 	private String email;
