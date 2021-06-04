@@ -10,30 +10,14 @@ server:
     
 spring:
 
-  datasource:
-    driver-class-name: org.mariadb.jdbc.Driver
-    url: jdbc:mariadb://kgc-springboot-webproject2.c4yzvzdyphko.ap-northeast-2.rds.amazonaws.com:3306/kgc_springboot_webproject2
-    username: kgc
-    password: kgc316497
-
-  security:
-    oauth2:
-      client:
-        registration:
-          google:
-            client-id: 623118713386-hffqegkq6i4gim41ito34ui6tr1nso8m.apps.googleusercontent.com
-            client-secret: 74T4bs6TuPrqbmeNys3SMksq
-            scope: 
-            - profile
-            - email
 
   jpa:
     open-in-view: true
-    hibernate:
-      ddl-auto: update # create, update
-      naming:
-        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl # 변수명대로 테이블컬럼명 생성
-      use-new-id-generator-mappings: false
+#    hibernate:
+#      ddl-auto: update # create, update
+#      naming:
+#        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl # 변수명대로 테이블컬럼명 생성
+#      use-new-id-generator-mappings: false
     show-sql: true # sql 콘솔출력
     properties:
       hibernate.format_sql: true # sql 문장정리
