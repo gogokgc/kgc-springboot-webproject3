@@ -24,6 +24,8 @@ spring:
     properties:
       hibernate.format_sql: true # sql 문장정리
       hibernate.dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+  session: 
+    store-type: jdbc
 
   jackson:
     serialization:
