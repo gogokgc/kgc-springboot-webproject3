@@ -12,3 +12,10 @@
 - Spring Security
 - SpringWeb
 - mustache
+- OAuth2 (google login)
+
+### Distribute
+- AWS
+- EC2
+- RDS
+- Travis CI
