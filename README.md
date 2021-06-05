@@ -19,3 +19,4 @@
 - EC2
 - RDS
 - Travis CI
+- S3
