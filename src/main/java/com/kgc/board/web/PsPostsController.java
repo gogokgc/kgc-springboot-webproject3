@@ -30,7 +30,7 @@ public class PsPostsController {
 			model.addAttribute("userName", user.getName());
 		}
 		
-		return "psPosts";
+		return "/ps/psPosts";
 	}
 	
 }
