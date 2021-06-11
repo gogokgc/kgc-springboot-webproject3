@@ -1,39 +1,58 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
+
 <html>
-<head>
-<meta charset="UTF-8" content="text/html; charset=UTF-8" />
+	<head>
+		<title>Game Post</title>
+		<meta charset="utf-8" content="text/html; charset=UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="/assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="/assets/css/noscript.css" /></noscript>
+	<body class="is-preload">
+		<!-- Wrapper -->
+			<div id="wrapper">
 
-<link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-<title>Game Posts</title>
-</head>
-<body class="bg-dark text-white">
+				<!-- Header -->
+					<header id="header">
+						<div class="inner">
 
-	<nav class="navbar navbar-expand-sm bg-secondary navbar-dark sticky-top">
-		<a class="navbar-brand" href="/">Home</a>
-		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-			<span class="navbar-toggler-icon"></span>
-		</button>
-		<div class="collapse navbar-collapse" id="collapsibleNavbar">
-			<ul class="navbar-nav">
+							<!-- Logo -->
+								<a href="/" class="logo">
+									<span class="symbol"><img src="/images/logo.svg" alt="" /></span><span class="title">Game Post</span>
+								</a>
 
-		{{#userName}}
-				<li class="nav-item">
-					<a class="nav-link" href="/posts/save">Posting</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="/psPosts">PsPage</a>
-				</li>
-		</div>
+							<!-- Nav -->
+								<nav>
+									<ul>
+										<li><a href="#menu">Menu</a></li>
+									</ul>
+								</nav>
 
+						</div>
+					</header>
 
-		UserName :<span id="user" class="m-2">{{userName}}</span> <a href="/logout" class="btn btn-dark">Logout</a> 
-		{{/userName}}
-
-		{{^userName}}
-		<li class="nav-item ml-auto"><a class="nav-link"
-			href="/auth/login">LogIn</a></li>
-		</ul>
-		{{/userName}}
-	</nav>
-	<br />
+				<!-- Menu -->
+				{{#userName}}
+					<nav id="menu">
+						<h2>Menu</h2>
+						ID : {{userName}}</br></br>
+						<ul>
+							<li><a href="/">Home</a></li>
+							<li><a href="/posts/save">Posting</a></li>
+							<li><a href="/">UserInfo</a></li>
+							<li><a href="/logout">Logout</a></li>
+						</ul>
+					</nav>
+				{{/userName}}
+				
+				{{^userName}}
+				<nav id="menu">
+						<h2>Menu</h2>
+						<ul>
+							<li><a href="/">Home</a></li>
+							<li><a href="/posts/save">Posting</a></li>
+							<li><a href="/generic">generic</a></li>
+							<li><a href="/elements">Elements</a></li>
+							<li><a href="/auth/login">Login</a></li>
+						</ul>
+					</nav>
+				{{/userName}}

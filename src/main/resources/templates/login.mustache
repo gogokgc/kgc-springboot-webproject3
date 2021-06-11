@@ -1,18 +1,15 @@
 {{>layout/header}}
-
-<br/>
-
-<div class="container justify-content-center text-dark mh-100" style="height:400px">
-      
-	{{^userName}}
+<div id="main">
+	<div class="inner">
+		<header>
+			<h1>Login Page</h1>
+		</header>
 	
-	<ul>
-      	<a href="/oauth2/authorization/google" class="btn btn-primary btn-block btn-lg">Google Login</a>
-    </ul>
-	
-	{{/userName}}
+		<section class="actions fit">
+			<a href="/oauth2/authorization/google" class="button primary fit">Google Login</a>
+		</section>
+	</div>
 </div>
-
-<br/>
+</br>
 
 {{>layout/footer}}

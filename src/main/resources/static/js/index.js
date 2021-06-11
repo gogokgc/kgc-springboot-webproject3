@@ -94,8 +94,9 @@ var main = {
 	check: function() {
 		var name = $('#userName').val();
 		var author = $('#author').val();
+		var admin = "kgc_Fe"; //admin account name = kgc_Fe
 		var id = $('#id').val();
-		if(name == author){
+		if(name == author || name == admin){
 			window.location.href = '/posts/update/' + id;
 		}else{
 			alert('you can not edit others posting');

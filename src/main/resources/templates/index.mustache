@@ -1,69 +1,29 @@
 {{>layout/header}}
 
-<style>
-/* Make the image fully responsive */
-.carousel-inner img {
-	width: 100%;
-	height: 100%;
-	margin: auto;
-	text-align: center;
-}
-</style>
-<div class="container">
-	<div id="slide" class="carousel slide" data-ride="carousel">
-
-		<!-- Indicators -->
-		<ul class="carousel-indicators">
-			<li data-target="#slide" data-slide-to="0" class="active"></li>
-			<li data-target="#slide" data-slide-to="1"></li>
-			<li data-target="#slide" data-slide-to="2"></li>
-		</ul>
-
-		<!-- The slideshow -->
-		<div class="carousel-inner">
-			<div class="carousel-item active">
-				<a href="/psPosts"><img class="img-fluid mx-auto" src="/images/ps.jpg" alt="ps"></a>
-			</div>
-			<div class="carousel-item">
-				<img class="img-fluid mx-auto" src="/images/nintendo.jpg" alt="nintendo">
-			</div>
-			<div class="carousel-item">
-				<img class="img-fluid mx-auto" src="/images/xbox.jpg" alt="xbox">
-			</div>
-		</div>
-
-		<!-- Left and right controls -->
-		<a class="carousel-control-prev" href="#slide" data-slide="prev"> <span
-			class="carousel-control-prev-icon"></span>
-		</a> <a class="carousel-control-next" href="#slide" data-slide="next">
-			<span class="carousel-control-next-icon"></span>
-		</a>
-	</div>
-	<br> 
-	* 게시물의 제목을 클릭하면 상세보기가 가능합니다.
-</div>
-
-<div class="container-fluid">
-	{{#posts}}
-
-
-	<div class="row justify-content-center text-dark">
-
-		<div class="container">
-			<div class="card">
-				<div class="card-body">
-					<h4 class="card-title">
-						<a href="/posts/detail/{{id}}">Title : {{title}}</a>
-					</h4>
-					<p class="card-text">Writer : {{author}}</p>
-
-				</div>
-			</div>
-			<br>
-		</div>
+<!-- Main -->
+<div id="main">
+	<div class="inner">
+		<header>
+			<h1>This is KGC's Game Posting site</h1>
+			<br />
+			<p>You can share you game experience with others any time in
+				here!</p>
+		</header>
+		<section class="tiles">
+		{{#posts}}
+			<article class="style7">
+				<span class="image"> <img src="images/pic05.jpg"/>
+				</span> <a href="/posts/detail/{{id}}">
+					<h2>{{title}}</h2>
+					<div class="content">
+						<p>{{author}}</p>
+					</div>
+				</a>
+			</article>
+		{{/posts}}
+		</section>
 
 	</div>
-
-	{{/posts}}
 </div>
+
 {{>layout/footer}}
