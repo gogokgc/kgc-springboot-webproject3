@@ -75,9 +75,9 @@ public class IndexController {
 			model.addAttribute("userName", user.getName());
 		}
 		
-		PostsResponseDto dto = postsService.findById(id);
-		
 		int hit = postsService.updateHit(id);
+		
+		PostsResponseDto dto = postsService.findById(id);
 		
 		if(hit ==1) {
 			model.addAttribute("post", dto);
