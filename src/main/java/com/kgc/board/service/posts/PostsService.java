@@ -44,7 +44,12 @@ public class PostsService {
 		return new PostsResponseDto(entity);
 	}
 
-	
+	@Transactional
+	public int updateHit(Long id) {
+		
+		return postsRepository.updateHit(id);
+	}
+
 	public List<PostsListResponseDto> findAllDesc(){
 		return postsRepository.findAllDesc().stream().map(PostsListResponseDto::new).collect(Collectors.toList());
 	}

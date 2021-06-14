@@ -7,6 +7,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
 
+import org.hibernate.annotations.ColumnDefault;
+
 import com.kgc.board.domain.BaseTimeEntity;
 
 import lombok.Builder;
@@ -30,6 +32,10 @@ public class Posts extends BaseTimeEntity{
 	private String content;
 	
 	private String author;
+	
+	@Column(nullable = false)
+	@ColumnDefault("0")
+	private int hit;
 
 	@Builder
 	public Posts(String title, String content, String author) {

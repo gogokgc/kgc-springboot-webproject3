@@ -76,8 +76,15 @@ public class IndexController {
 		}
 		
 		PostsResponseDto dto = postsService.findById(id);
-		model.addAttribute("post", dto);
 		
-		return "postsDetail";
+		int hit = postsService.updateHit(id);
+		
+		if(hit ==1) {
+			model.addAttribute("post", dto);
+			return "postsDetail";
+		
+		}else {
+			return null;
+		}
 	}
 }
