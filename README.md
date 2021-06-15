@@ -1,52 +1,83 @@
-# kgc-springboot-webproject3
+# Portfolio
 
-### IDE - Spring Tool Suite4
+#### 스프링부트, JPA 를 활용한 게임정보 공유용 게시판
+Link : https://bit.ly/3x2i2FQ
 
-- GRADLE
+## skills
+   * **Language** : Java, JavaScript, HTML5, CSS
+   * **Framework** : Spring Boot
+   * **Build Tool** : Gradle
+   * **Database** : MySql, MariaDB
+   * **Development Tool** : Eclipes(STS4)
+   * **distribution** : AWS(EC2, RDS, S3, codeDeploy, IAM), TravisCI
 
-### - Spring Starter Project
-- Spring Boot DevTool
-- Lombok
-- Spring Data JPA
-- MySQL Driver
-- Spring Security
-- SpringWeb
-- mustache
-- OAuth2 (google login)
+### OS : MacOs
 
-### Distribute
-- AWS
-- EC2
-- RDS
-- S3
-- CodeDeploy
-- Travis CI
+- **Plugins**
+   - Spring Starter Project
+     - Spring Boot DevTool
+     - Lombok
+     - Spring Data JPA
+     - MySQL Driver
+     - Spring Security
+     - SpringWeb
+     - mustache
+     - OAuth2 (google login)
+---
+## DB
+  - MySql(로컬환경), MariaDB(배포환경) 사용
+  - JPA활용 DB 관리
+  - 엔티티 클래스로 테이블 관리
+  - JPA Repository 로 기본 CRUD메소드 및 추가 query 운용
+  - Dto 클래스로 데이터 이동 관리
+  - Service 단에서 트랜색션 관리
 
----------------------------
+---
 
-## Read
-메인 페이지에 기본 Posts DB 테이블에 있는 데이터를 전부 표시할수있게 설정
-<img width="2032" alt="스크린샷 2021-06-08 20 56 07" src="https://user-images.githubusercontent.com/79429581/121181153-a8f4c900-c89c-11eb-96a2-d9da86b5eeb4.png">
+## 메인페이지
+  - DB 에 있는 기본 게시물이 보이도록 구현 (기본 글 타이틀이 보이고 커서가 올라가면 작성자 이름이 나타나도록)
+  - 게시물이 내림차순으로 정렬할수있도록 Repository 에 @Query 추가
+  - index컨트롤러 에서 Model 로 받아와 출력
+  - 오른쪽 상단에 메뉴페이지 에서 로그인, 포스팅 페이지로 이동가능
+  - 로그인 페이지와 메인페이지 이외에는 로그인 필요 하도록 시큐리티 설정
+<img width="1151" alt="메인페이지" src="https://user-images.githubusercontent.com/79429581/122020333-a5fb5a80-cdff-11eb-8c56-030cd68106c4.png">
 
----------------------------
+## 로그인
+  - OAuth2 활용 구글로그인 구현 로그인 아이디는 DB세션에 저장, 로그인중인 아이디는 메뉴페이지에서 확인 가능
+  - 로그인 확인시 Enum 활용하여 유저에 사용자 Role 부여하여 시큐리티 통과가능
+<img width="1036" alt="구글로그인1" src="https://user-images.githubusercontent.com/79429581/122020363-ae539580-cdff-11eb-9e1c-661402ed956c.png">
+<img width="547" alt="구글로그인2" src="https://user-images.githubusercontent.com/79429581/122020380-b01d5900-cdff-11eb-866d-d16020a37ce9.png">
 
-## Create
-작성자 는 세션 에서 가져온 유저네임으로 수정불가 제목 과 내용(summernote 사용) 입력가능
-save 버튼은 자바스크립트 연동하여 타이틀 or 내용이 공백일시 저장이 되지 않도록 구현 (조건문), ajax 이용 POST 로 데이터 전달 
-글 저장을 위한 Posting 페이지로 이동하기 위해선 로그인을 거쳐야 가능하게 스프링 시큐리티로 제한
-<img width="2032" alt="스크린샷 2021-06-08 20 57 05" src="https://user-images.githubusercontent.com/79429581/121181500-0ab53300-c89d-11eb-86f1-ea13fb8432f7.png">
 
----------------------------
+## 글 작성페이지
+  - 글 작성시 작성자에 세션 아이디 자동 삽입
+  - 글 제목, 내용으로 이루어져 있으며 저장버튼은 자바스크립트 연동 AJAX 활용 하여 POST 요청 으로 JSON데이터 DB 로 전송
+  - 취소버튼 으로 메인페이지로 이동
+<img width="1137" alt="글작성페이지" src="https://user-images.githubusercontent.com/79429581/122020405-b57aa380-cdff-11eb-92e7-59fb16c2ad7d.png">
 
-## Update & Delete
-수정 페이지로 이동하기위한 Edit 버튼도 보안을 위해 자바스크립트와 연동하여 현재 로그인해있는 세션 유저이름과 작성자 이름이 다를시 수정불가
-<img width="2032" alt="스크린샷 2021-06-08 20 57 29" src="https://user-images.githubusercontent.com/79429581/121182076-acd51b00-c89d-11eb-8955-719e8520894b.png">
 
-수정페이지에서 글번호 작성자 제오 수정가능 수정페이지 진입 자체에 유저이름을 이용한 보안이 있으므로 수정시 글 삭제 가능하게 구현
-<img width="2032" alt="스크린샷 2021-06-08 20 57 41" src="https://user-images.githubusercontent.com/79429581/121182164-c6766280-c89d-11eb-9734-40b7b01c4105.png">
+## 글 상세페이지
+  - 메인페이지에서 게시물을 클릭하면 글 상세보기 가능
+  - 컨트롤러에서 Model 로 받아온 Posts 데이터 활용 글번호, 작성자, 조회수 표현
+  - 조회수 기능 구현위해 Posts 엔티티에 컬럼추가, Repository 에 @Query 추가 서비스클래스에 구현 후
+  - 컨트롤러에서 요청이 있을시 조회수 추가 기능 구현후 글상세 페이지에 진입 할수있도록 순서 신경써서 설정(조회후 조회수 카운팅으로 들어가면 첫 조회시 디폴트값 0부터 시작하기때문에)
+  - Utterances 활용 댓글 시스템 구현
+  - 댓글용 Repository 생성후 View 단에 스크립트 삽입 구현의 용이성, 데이터 관리 용이성 때문에 채택
+  - Edit 버튼으로 수정페이지 진입가능
+  - 작성자, 세션 유저이름을 기준으로 다른사람의 포스팅을 무단으로 수정할수 없도록 
+  - 자바스크립트 활용 유저 체크 과정 구현 (관리자 아이디, 작성자 본인이 아니면 수정할수 없도록 구현)
+<img width="1056" alt="글상세페이지" src="https://user-images.githubusercontent.com/79429581/122020455-bf040b80-cdff-11eb-9377-6c3895ecb952.png">
+<img width="1048" alt="글수정보안" src="https://user-images.githubusercontent.com/79429581/122020504-c9260a00-cdff-11eb-8401-65e9cb569259.png">
 
----------------------------
-## OAuth2 for Login (Google)
-OAuth2 를 활용한 구글 로그인 연동
-<img width="2032" alt="스크린샷 2021-06-08 20 56 29" src="https://user-images.githubusercontent.com/79429581/121183798-67195200-c89f-11eb-8e3d-0c5569499e9a.png">
+
+## 글 수정 페이지
+  - 컨트롤러 에서 받아오는 Model  데이터 활용 글번호, 작성자 자동삽입
+  - 글 제목과 내용 수정 가능
+  - 저장버튼 - 자바스크립트 활용 PUT 요청으로 DB 에 데이터 전송, 클릭실수 방지위해 alert 기능 활용 2차확인
+  - 삭제버튼 - 자바스크립트 활용 DELETE 요청 으로 DB 데이터 삭제, 클릭실수 방지위해 alert 기능 활용 2차확인
+  - 취소버튼 - 메인페이지 이동
+  - 리셋버튼 - 현재페이지 새로고침
+<img width="1054" alt="글수정페이지" src="https://user-images.githubusercontent.com/79429581/122020499-c6c3b000-cdff-11eb-8711-e4e0d9b6e1db.png">
+
+
 
