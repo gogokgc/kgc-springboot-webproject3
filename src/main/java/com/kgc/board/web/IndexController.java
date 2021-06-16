@@ -2,6 +2,9 @@ package com.kgc.board.web;
 
 import javax.servlet.http.HttpSession;
 
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort.Direction;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,16 +25,19 @@ public class IndexController {
 	private final HttpSession httpSession;
 
 	@GetMapping("/")
-	public String index(Model model) {
+	public String index(Model model, @PageableDefault(size = 6, sort = "id", direction = Direction.DESC)Pageable pageable) {
 		
-		model.addAttribute("posts", postsService.findAllDesc());
+//		model.addAttribute("posts", postsService.findAllDesc());
+		model.addAttribute("posts", postsService.findAllPaging(pageable));
+		model.addAttribute("previous", pageable.previousOrFirst().getPageNumber());
+		model.addAttribute("next", pageable.next().getPageNumber());
+		model.addAttribute("pageCheck", postsService.pageCheck(pageable));
 		
 		SessionUser user = (SessionUser) httpSession.getAttribute("user");
 		
 		if(user != null) {
 			model.addAttribute("userName", user.getName());
 			model.addAttribute("userPicture", user.getPicture());
-			
 		}
 		
 		return "index";
@@ -49,6 +55,7 @@ public class IndexController {
 		
 		if(user != null) {
 			model.addAttribute("userName", user.getName());
+			model.addAttribute("userPicture", user.getPicture());
 		}
 		
 		return "postsSave";
@@ -60,6 +67,7 @@ public class IndexController {
 		
 		if(user != null) {
 			model.addAttribute("userName", user.getName());
+			model.addAttribute("userPicture", user.getPicture());
 		}
 		
 		PostsResponseDto dto = postsService.findById(id);
@@ -75,6 +83,7 @@ public class IndexController {
 		
 		if(user != null) {
 			model.addAttribute("userName", user.getName());
+			model.addAttribute("userPicture", user.getPicture());
 		}
 		
 		int hit = postsService.updateHit(id);
