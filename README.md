@@ -42,7 +42,8 @@ Link : https://bit.ly/3x2i2FQ
   - 로그인 페이지와 메인페이지 이외에는 로그인 필요 하도록 시큐리티 설정
   - Pageable 활용 페이징 처리 (게시물 6개 기준) 추가
   - JPA 쿼리 활용 키워드(제목, 내용) 검색 기능 추가 검색결과 페이지로 이동하여 검색 결과 출력
-<img width="1151" alt="메인페이지" src="https://user-images.githubusercontent.com/79429581/122020333-a5fb5a80-cdff-11eb-8c56-030cd68106c4.png">
+<img width="1139" alt="스크린샷 2021-06-22 16 27 51" src="https://user-images.githubusercontent.com/79429581/122882188-e49c9200-d376-11eb-8fd9-9a4387cd5bd3.png">
+<img width="1159" alt="스크린샷 2021-06-22 16 29 19" src="https://user-images.githubusercontent.com/79429581/122882404-1ca3d500-d377-11eb-8c10-1ec55ef27b71.png">
 
 ## 로그인
   - OAuth2 활용 구글로그인 구현 로그인 아이디는 DB세션에 저장, 로그인중인 아이디는 메뉴페이지에서 확인 가능
