@@ -9,6 +9,20 @@
 			<p>You can share you game experience with others any time in
 				here!</p>
 		</header>
+		
+		 <form method="get" action="/posts/search" >
+            <div class="row" align="right">
+            	<div class="col-6 col-12-xsmall">
+					<input hidden=""/>
+				</div>
+				<div class="col-6 col-12-xsmall">
+					<input type="text" name="keyword" id="keyword" placeholder="Search" />
+					<br>
+					<button type="submit">Search</button>
+				</div>
+			</div>
+        </form>
+        
 		<section class="tiles">
 		{{#posts}}
 			<article class="style7">
