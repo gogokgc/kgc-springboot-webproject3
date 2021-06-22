@@ -49,6 +49,13 @@ public class IndexController {
 
 		model.addAttribute("searchResults", postsService.searchByTitleContent(keyword, keyword));
 		model.addAttribute("keyword", keyword);
+		
+		SessionUser user = (SessionUser) httpSession.getAttribute("user");
+		
+		if(user != null) {
+			model.addAttribute("userName", user.getName());
+			model.addAttribute("userPicture", user.getPicture());
+		}
 
 		return "searchResult";
 	}
