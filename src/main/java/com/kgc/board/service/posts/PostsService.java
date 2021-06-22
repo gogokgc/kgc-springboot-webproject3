@@ -21,58 +21,64 @@ import lombok.RequiredArgsConstructor;
 @Service
 public class PostsService {
 
-	private final PostsRepository postsRepository;
-	
-	@Transactional
-	public Long save(PostsSaveRequestDto requestDto) {
-		
-		return postsRepository.save(requestDto.toEntity()).getId();
+    private final PostsRepository postsRepository;
+
+    @Transactional
+    public Long save(PostsSaveRequestDto requestDto) {
+
+        return postsRepository.save(requestDto.toEntity()).getId();
+    }
+
+    @Transactional
+    public Long update(Long id, PostsUpdateRequestDto requestDto) {
+
+        Posts posts = postsRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("There is No Posting. id : " + id));
+
+        posts.update(requestDto.getTitle(), requestDto.getContent());
+
+        return id;
+    }
+
+    public PostsResponseDto findById(Long id) {
+
+        Posts entity = postsRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("There is No Posting. id : " + id));
+
+        return new PostsResponseDto(entity);
+    }
+
+    @Transactional
+    public int updateHit(Long id) {
+
+        return postsRepository.updateHit(id);
+    }
+
+    public Page<Posts> findAllPaging(Pageable pageable) {
+        return postsRepository.findAll(pageable);
+    }
+
+    @Transactional
+    public boolean pageCheck(Pageable pageable) {
+        Page<Posts> page = findAllPaging(pageable);
+        Boolean check = page.hasNext();
+
+        return check;
+    }
+
+    public List<PostsListResponseDto> findAllDesc() {
+        return postsRepository.findAllDesc().stream().map(PostsListResponseDto::new).collect(Collectors.toList());
+    }
+    
+    @Transactional
+	public List<PostsListResponseDto> searchByTitleContent(String title, String content){
+
+		return postsRepository.findByContentContainingOrTitleContaining(title, content).stream().map(PostsListResponseDto::new).collect(Collectors.toList());
 	}
 
-	@Transactional
-	public Long update(Long id, PostsUpdateRequestDto requestDto) {
-		
-		Posts posts = postsRepository.findById(id).orElseThrow(()-> new IllegalArgumentException("There is No Posting. id : " + id)); 
-		
-		posts.update(requestDto.getTitle(),	requestDto.getContent());
-		
-		return id;
-	}
+    @Transactional
+    public void delete(Long id) {
 
-	public PostsResponseDto findById(Long id) {
-		
-		Posts entity = postsRepository.findById(id).orElseThrow(()-> new IllegalArgumentException("There is No Posting. id : " + id));
-		
-		return new PostsResponseDto(entity);
-	}
+        Posts posts = postsRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("There is No Posting. id : " + id));
 
-	@Transactional
-	public int updateHit(Long id) {
-		
-		return postsRepository.updateHit(id);
-	}
-	
-	public Page<Posts> findAllPaging(Pageable pageable){
-		return postsRepository.findAll(pageable);
-	}
-	
-	@Transactional
-	public boolean pageCheck(Pageable pageable) {
-		Page<Posts> page = findAllPaging(pageable);
-		Boolean check = page.hasNext();
-		
-		return check;
-	}
-	
-	public List<PostsListResponseDto> findAllDesc(){
-		return postsRepository.findAllDesc().stream().map(PostsListResponseDto::new).collect(Collectors.toList());
-	}
-	
-	@Transactional
-	public void delete(Long id) {
-		
-		Posts posts = postsRepository.findById(id).orElseThrow(()-> new IllegalArgumentException("There is No Posting. id : " + id));
-		
-		postsRepository.delete(posts);
-	}
+        postsRepository.delete(posts);
+    }
 }

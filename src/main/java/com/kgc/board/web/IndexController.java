@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.kgc.board.config.auth.dto.SessionUser;
 import com.kgc.board.service.posts.PostsService;
@@ -41,6 +42,15 @@ public class IndexController {
 		}
 		
 		return "index";
+	}
+	
+	@GetMapping("/posts/search")
+	public String search(Model model,@RequestParam String keyword) {
+
+		model.addAttribute("searchResults", postsService.searchByTitleContent(keyword, keyword));
+		model.addAttribute("keyword", keyword);
+
+		return "searchResult";
 	}
 	
 	@GetMapping("/auth/login")
