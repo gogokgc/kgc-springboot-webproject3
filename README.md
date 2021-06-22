@@ -40,6 +40,8 @@ Link : https://bit.ly/3x2i2FQ
   - index컨트롤러 에서 Model 로 받아와 출력
   - 오른쪽 상단에 메뉴페이지 에서 로그인, 포스팅 페이지로 이동가능
   - 로그인 페이지와 메인페이지 이외에는 로그인 필요 하도록 시큐리티 설정
+  - Pageable 활용 페이징 처리 (게시물 6개 기준) 추가
+  - JPA 쿼리 활용 키워드(제목, 내용) 검색 기능 추가 검색결과 페이지로 이동하여 검색 결과 출력
 <img width="1151" alt="메인페이지" src="https://user-images.githubusercontent.com/79429581/122020333-a5fb5a80-cdff-11eb-8c56-030cd68106c4.png">
 
 ## 로그인
