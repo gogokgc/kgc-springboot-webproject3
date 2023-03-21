@@ -1,7 +1,7 @@
 # Portfolio
 
 #### 스프링부트, JPA 를 활용한 게임정보 공유용 게시판
-Link : https://bit.ly/3x2i2FQ
+Link : https://bit.ly/3x2i2FQ (현재 서비스 중지)
 
 ## skills
    * **Language** : Java, JavaScript, HTML5, CSS
